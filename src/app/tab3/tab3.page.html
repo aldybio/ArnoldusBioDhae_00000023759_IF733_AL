@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-list style="display:flex; justify-content: center;">
+          <ion-item>
+            <ion-avatar style="width: 100px; height: 100px;">
+              <img src={{profilePic}} (click)="getPicture('camera')" alt="">
+            </ion-avatar>
+          </ion-item>
+        </ion-list>
+        <ion-list style="display:flex; justify-content: center;" >
+          <h3>{{userName}}</h3>
+        </ion-list>
+        <ion-list style="display:flex; justify-content: center;">
+          <ion-label>{{email}}</ion-label>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+      <p style="text-align: center;"> Terima Kasih untuk Dosen dan Aslab mata kuliah terkait<p>
+  </ion-grid>
+  <input type="file" *ngIf="isDesktop" #filePicker (change)="OnFileChoose($event)"/>
+  <ion-button (click)="logout()" style="margin-top:50px;" expand="full" color="danger">Logout</ion-button> 
+  <p style="text-align: center;">UAS-2020_23759</p>
+</ion-content>

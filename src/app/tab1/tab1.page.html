@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Daftar Pertemanan
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-segment value="all">
+      <ion-segment-button (click)="showAllUser()" value="all">Semua</ion-segment-button>
+      <ion-segment-button (click)="showFriends()" value="favorites">Teman</ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  
+  <ion-item lines="none" *ngFor="let user of users; let i = index" [ngClass]="friendlist && !user.added ? 'hide' : ''">
+    <ion-avatar slot="start">
+      <img src="https://instagram.fdps5-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/s640x640/22580297_269218003599599_2183509412772052992_n.jpg?_nc_ht=instagram.fdps5-1.fna.fbcdn.net&_nc_cat=111&_nc_ohc=apn9VS1v7KgAX8kZi7X&tp=1&oh=8e492705486481d996ae907483cdd766&oe=6006FB4E" />
+    </ion-avatar>
+    <ion-label>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
+      <p>{{user.email}}</p>
+    </ion-label>
+    <ion-button (click)="addFriend(user.email,i,$event)" [ngClass]="user.added ? 'hide' : ''" class='btnAdd-{{i}}'>Tambahkan Teman</ion-button>
+    <ion-button color="danger" (click)="removeFriend(user.email,i,$event)" [ngClass]="friendlist && user.added ? '' : 'hide'" class='btnRemove-{{i}}'>Hapus Pertemanan</ion-button>
+  </ion-item>
+
+</ion-content>
